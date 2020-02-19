@@ -1,2 +1,176 @@
+
+<!-- README.md is generated from README.Rmd. Please edit that file -->
+
 # DepartureTime
+
+<!-- badges: start -->
+
+<!-- badges: end -->
+
 R package to generate departure times for accessibility analysis
+
+## Description
+
+This script was inspired by [Owen & Murphy
+(2018)](https://trid.trb.org/view/1497217) study and was developed when
+working on [Stępniak et
+al. (2019)](https://doi.org/10.1016/j.jtrangeo.2019.01.007) paper:
+
+Stępniak, M., Pritchard, J.P., Geurs K.T., Goliszek S., 2019, *The
+impact of temporal resolution on public transport accessibility
+measurement: review and case study in Poland*, Journal of Transport
+Geography.
+
+The goal of DepartureTime is to prepare a `.dbf` file which contains
+generated departure times, using user-defined:
+
+  - sampling method
+  - date
+  - time-window
+  - path and file name
+
+Supported sampling methods:
+
+  - **Systematic** sampling method: departure times are selected using a
+    regular interval defined by the frequency
+  - **Simple Random** sampling method: a specified number of departure
+    times (defined by the frequency) is randomly selected from the time
+    window
+  - **Hybrid** sampling method: departure times are randomly selected
+    from given time intervals (resulted from applied temporal
+    resolution)
+  - **Constrained Random Walk Sampling** sampling method: a first
+    departure time is randomly selected from the subset of the length
+    defined by the frequency and beginning of the time window; then, the
+    next departure time is randomly selected from the subset limited by
+    \(Tn+f/2\) and \(Tn+f+f/2\)
+
+For details please consult [Owen & Murphy
+(2018)](https://trid.trb.org/view/1497217).
+
+## Installation
+
+You can install `DepartureTime` pacakage from
+[GitHub](https://github.com/) with:
+
+``` r
+# install.packages("devtools")
+devtools::install_github("stmarcin/DepartureTime")
+```
+
+## Function syntax:
+
+    DepartureTime <- function(method = "H",
+                              dy = format(Sys.Date(), "%Y"),  
+                              dm = format(Sys.Date(), "%m"), 
+                              dd = format(Sys.Date(), "%d"),
+                              tmin = 0, tmax = 24,
+                              res = 5,
+                              MMDD = TRUE,
+                              ptw = FALSE,
+                              path = getwd(),
+                              file = "DepTime")
+
+## Function variables:
+
+  - `method` - sampling method; Options:
+      - `R` OR `Random`: Simple random sampling;
+      - `S` OR `Systematic`: Systematic sampling;
+      - `H` OR `Hybrid`: Hybrid sampling;
+      - `W` OR `Walk`: Constrained random walk sampling;
+  - `dy`, `dm` and `dd` - date of the analysis (formats: YYYY, MM, DD);
+    **default: system date**;
+  - `tmin` and `tmax` - limits of the time window (format: HH);
+    **default: full day** (00:00 - 24:00);
+  - `res` - temporal resolution; **default: 5 minutes**
+  - `MMDD` - date format of the output (TRUE / FALSE) **default: TRUE**
+      - `TRUE`: MM/DD/YYYY;
+      - `FALSE`: DD/MM/YYYY;
+  - `ptw` - print limits of subsetted time-windows; **default: FALSE**;
+  - `path` - path where the output will be saved (absolute or relative
+    paths availables); **default: working directory**
+  - `file` - name of the *.dbf* file, where departure times will be
+    saved; **default: “DepTime”**
+
+## Output
+
+`.dbf` file which contains generated departure times (to be used e.g. in
+ArcGIS Network to generated ODs with time-dependent transport data,
+e.g. GTFS). File
+structure:
+
+<table class="table" style="width: auto !important; margin-left: auto; margin-right: auto;">
+
+<thead>
+
+<tr>
+
+<th style="text-align:left;">
+
+ColumnName
+
+</th>
+
+<th style="text-align:left;">
+
+Description
+
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+
+<tr>
+
+<td style="text-align:left;">
+
+ID
+
+</td>
+
+<td style="text-align:left;">
+
+rowID (integer), starts with 0
+
+</td>
+
+</tr>
+
+<tr>
+
+<td style="text-align:left;">
+
+Date
+
+</td>
+
+<td style="text-align:left;">
+
+Departure date & hour
+
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+
+## Examples
+
+Working example, uses all default variables and hybrid sampling method:
+
+    DepartureTime()
+
+Example with user-defined parameters:
+
+    DepartureTime(method = "S",   # systematic sampling method
+      dm = 5, dd = 15,  # user-defined date: 15th May, 2019 (current year)
+      tmin = 7, tmax = 10,          # user-defined time window (07:00 - 10:00)
+      res = 15,                     # user-defined temporal resolution (15 minutes)
+      path = "Data/StartTime",      # user-defined relavive path and file name (next line)
+      file = "DepTime_H15_0710")    # the file will be saved as: "Data/StartTime/DepTime_H15_0710.dbf" 
+                                    # (relative path from working directory)
