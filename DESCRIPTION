@@ -18,4 +18,4 @@ Language: en-US
 Imports: 
     tibble,
     utils
-RoxygenNote: 6.1.1
+RoxygenNote: 7.0.2

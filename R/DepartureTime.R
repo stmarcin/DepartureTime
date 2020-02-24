@@ -1,6 +1,6 @@
 #' @title Generate Departure times
 #'
-#' @description \code{DepartureTimes} generate .dbf file with departure times for accessibility analyses with temporal resolution (e.g GTFS)
+#' @description \code{DepartureTimes} generate data.frame with departure times for accessibility analyses with temporal resolution (e.g GTFS)
 #'
 #' @param method (type: character) define sampling method. Optional values:
 #'
@@ -48,7 +48,8 @@
 #' DepartureTime(method = "S",       # systematic sampling method
 #'  dm = 5, dd = 15,                 # user-defined date: 15th May, 2019 (current year)
 #'  tmin = 7, tmax = 10,             # user-defined time window (07:00 - 10:00)
-#'  res = 15)}                        # user-defined temporal resolution (15 minutes)
+#'  res = 15)                        # user-defined temporal resolution (15 minutes)
+#'  }
 #'
 #'
 #' @export
@@ -62,9 +63,7 @@ DepartureTime <- function(method = "H",
                           tmax = 24,
                           res = 5,
                           MMDD = TRUE,
-                          ptw = FALSE,
-                          path = getwd(),
-                          file = "DepTime") {
+                          ptw = FALSE) {
 
    # test if all parameters are correct ----
 
@@ -92,7 +91,7 @@ DepartureTime <- function(method = "H",
 
          # check if 'dy' is a realistic year
          if(dy%%1==0 & (dy < 2015 | dy > as.numeric(format(Sys.Date(), "%Y"))))  {
-            response_menu <- menu(c("Yes", "No"), title=paste0("You have selected ", dy,
+            response_menu <- utils::menu(c("Yes", "No"), title=paste0("You have selected ", dy,
                                                                " as a year. \n  Do you want to continue?"))
             if(response_menu == 1)  warning(paste("You are using", dy, "as a year"))
             if(response_menu == 2)  stop("Please provide a a valid argument 'dy', e.g. dy = ",
@@ -192,7 +191,7 @@ DepartureTime <- function(method = "H",
 
       if((tmax - tmin)*60/res > 300) {
 
-         response_menu <- menu(c("Yes", "No"),
+         response_menu <- utils::menu(c("Yes", "No"),
                                title=paste0("You are about to create large data.frame (", (tmax - tmin)*60/res,
                                             " rows). \n Do you want to continue?"))
 
