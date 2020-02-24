@@ -1,5 +1,5 @@
 Package: DepartureTime
-Title: Generate Departure Times
+Title: Generate Departure Times for Accessibility Analysis
 Version: 0.0.0.9000
 Authors@R: 
     person(given = "Marcin",
@@ -7,7 +7,7 @@ Authors@R:
            role = c("aut", "cre"),
            email = "marcinstepniak@ucm.es",
            comment = c(ORCID = "0000-0002-6489-5443"))
-Description: Generate .dbf file with departure times using user-defined: sampling method, date, time-window, path and file name. Supports four sampling methods (Systematic, Simple Random, Hybrid and Constrained Random Walk Sampling). 
+Description: Generate tibble with departure times using user-defined: sampling method, date, time-window, path and file name. Supports four sampling methods (Systematic, Simple Random, Hybrid and Constrained Random Walk Sampling). 
 License: GPL-3
 Encoding: UTF-8
 LazyData: true
@@ -16,6 +16,6 @@ Suggests:
     spelling
 Language: en-US
 Imports: 
-    foreign,
+    tibble,
     utils
 RoxygenNote: 6.1.1
