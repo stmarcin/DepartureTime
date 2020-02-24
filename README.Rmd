@@ -114,18 +114,17 @@ DepartureTime::DepartureTime() %>%
 
 
 Example with user-defined parameters:
-```
-DepartureTime(method = "S",   # systematic sampling method
-  dm = 5, dd = 15,  # user-defined date: 15th May, 2019 (current year)
+```{r, eval = F}
+DepartureTime(method = "S",    # systematic sampling method
+  dm = 5, dd = 15,             # user-defined date: 15th May, 2020 (current year)
   tmin = 7, tmax = 9,          # user-defined time window (07:00 - 09:00)
-  res = 20)                     # user-defined temporal resolution (20 minutes)
+  res = 20)                    # user-defined temporal resolution (20 minutes)
 ```
 
 ```{r, echo = F, warning = F, message = F }
 # library(dplyr)
 
 DepartureTime::DepartureTime(method = "S",  dm = 5, dd = 15,  tmin = 7, tmax = 9, res = 20) %>% 
-  # head() %>% 
   knitr::kable(format='html', escape = FALSE) %>% 
   kableExtra::kable_styling(full_width = F)
 ```

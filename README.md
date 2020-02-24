@@ -204,7 +204,7 @@ Date
 
 <td style="text-align:left;">
 
-02/24/2020 00:07
+02/24/2020 00:08
 
 </td>
 
@@ -220,7 +220,7 @@ Date
 
 <td style="text-align:left;">
 
-02/24/2020 00:10
+02/24/2020 00:13
 
 </td>
 
@@ -236,7 +236,7 @@ Date
 
 <td style="text-align:left;">
 
-02/24/2020 00:16
+02/24/2020 00:18
 
 </td>
 
@@ -252,7 +252,7 @@ Date
 
 <td style="text-align:left;">
 
-02/24/2020 00:23
+02/24/2020 00:20
 
 </td>
 
@@ -280,10 +280,12 @@ Date
 
 Example with user-defined parameters:
 
-    DepartureTime(method = "S",   # systematic sampling method
-      dm = 5, dd = 15,  # user-defined date: 15th May, 2019 (current year)
-      tmin = 7, tmax = 9,          # user-defined time window (07:00 - 09:00)
-      res = 20)                     # user-defined temporal resolution (20 minutes)
+``` r
+DepartureTime(method = "S",    # systematic sampling method
+  dm = 5, dd = 15,             # user-defined date: 15th May, 2020 (current year)
+  tmin = 7, tmax = 9,          # user-defined time window (07:00 - 09:00)
+  res = 20)                    # user-defined temporal resolution (20 minutes)
+```
 
 <table class="table" style="width: auto !important; margin-left: auto; margin-right: auto;">
 
