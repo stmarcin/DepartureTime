@@ -1,27 +1,19 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# DepartureTime
-
 <!-- badges: start -->
 
+[![Project Status:
+Active](http://www.repostatus.org/badges/latest/active.svg)](http://www.repostatus.org/#active)
 <!-- badges: end -->
+
+# DepartureTime
 
 R package to generate departure times for accessibility analysis
 
 ## Description
 
-This script was inspired by [Owen & Murphy
-(2018)](https://trid.trb.org/view/1497217) study and was developed when
-working on [Stępniak et
-al. (2019)](https://doi.org/10.1016/j.jtrangeo.2019.01.007) paper:
-
-Stępniak, M., Pritchard, J.P., Geurs K.T., Goliszek S., 2019, *The
-impact of temporal resolution on public transport accessibility
-measurement: review and case study in Poland*, Journal of Transport
-Geography.
-
-The goal of DepartureTime is to prepare a `.dbf` file which contains
+The goal of DepartureTime is to prepare a `data.frame` which contains
 generated departure times, using user-defined:
 
   - sampling method
@@ -60,6 +52,8 @@ devtools::install_github("stmarcin/DepartureTime")
 
 ## Function syntax:
 
+    library(DepartureTime)
+    
     DepartureTime <- function(method = "H",
                               dy = format(Sys.Date(), "%Y"),  
                               dm = format(Sys.Date(), "%m"), 
@@ -67,9 +61,7 @@ devtools::install_github("stmarcin/DepartureTime")
                               tmin = 0, tmax = 24,
                               res = 5,
                               MMDD = TRUE,
-                              ptw = FALSE,
-                              path = getwd(),
-                              file = "DepTime")
+                              ptw = FALSE)
 
 ## Function variables:
 
@@ -87,16 +79,12 @@ devtools::install_github("stmarcin/DepartureTime")
       - `TRUE`: MM/DD/YYYY;
       - `FALSE`: DD/MM/YYYY;
   - `ptw` - print limits of subsetted time-windows; **default: FALSE**;
-  - `path` - path where the output will be saved (absolute or relative
-    paths availables); **default: working directory**
-  - `file` - name of the *.dbf* file, where departure times will be
-    saved; **default: “DepTime”**
 
 ## Output
 
-`.dbf` file which contains generated departure times (to be used e.g. in
-ArcGIS Network to generated ODs with time-dependent transport data,
-e.g. GTFS). File
+`data.frame` which contains generated departure times (to be used
+e.g. in ArcGIS Network to generated ODs with time-dependent transport
+data, e.g. GTFS). File
 structure:
 
 <table class="table" style="width: auto !important; margin-left: auto; margin-right: auto;">
@@ -163,14 +151,317 @@ Departure date & hour
 
 Working example, uses all default variables and hybrid sampling method:
 
-    DepartureTime()
+    DepartureTime() %>% 
+      head()
+
+<table class="table" style="width: auto !important; margin-left: auto; margin-right: auto;">
+
+<thead>
+
+<tr>
+
+<th style="text-align:right;">
+
+ID
+
+</th>
+
+<th style="text-align:left;">
+
+Date
+
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+
+<tr>
+
+<td style="text-align:right;">
+
+0
+
+</td>
+
+<td style="text-align:left;">
+
+02/24/2020 00:01
+
+</td>
+
+</tr>
+
+<tr>
+
+<td style="text-align:right;">
+
+1
+
+</td>
+
+<td style="text-align:left;">
+
+02/24/2020 00:07
+
+</td>
+
+</tr>
+
+<tr>
+
+<td style="text-align:right;">
+
+2
+
+</td>
+
+<td style="text-align:left;">
+
+02/24/2020 00:10
+
+</td>
+
+</tr>
+
+<tr>
+
+<td style="text-align:right;">
+
+3
+
+</td>
+
+<td style="text-align:left;">
+
+02/24/2020 00:16
+
+</td>
+
+</tr>
+
+<tr>
+
+<td style="text-align:right;">
+
+4
+
+</td>
+
+<td style="text-align:left;">
+
+02/24/2020 00:23
+
+</td>
+
+</tr>
+
+<tr>
+
+<td style="text-align:right;">
+
+5
+
+</td>
+
+<td style="text-align:left;">
+
+02/24/2020 00:26
+
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
 
 Example with user-defined parameters:
 
     DepartureTime(method = "S",   # systematic sampling method
       dm = 5, dd = 15,  # user-defined date: 15th May, 2019 (current year)
-      tmin = 7, tmax = 10,          # user-defined time window (07:00 - 10:00)
-      res = 15,                     # user-defined temporal resolution (15 minutes)
-      path = "Data/StartTime",      # user-defined relavive path and file name (next line)
-      file = "DepTime_H15_0710")    # the file will be saved as: "Data/StartTime/DepTime_H15_0710.dbf" 
-                                    # (relative path from working directory)
+      tmin = 7, tmax = 9,          # user-defined time window (07:00 - 09:00)
+      res = 20)                     # user-defined temporal resolution (20 minutes)
+
+<table class="table" style="width: auto !important; margin-left: auto; margin-right: auto;">
+
+<thead>
+
+<tr>
+
+<th style="text-align:right;">
+
+ID
+
+</th>
+
+<th style="text-align:left;">
+
+Date
+
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+
+<tr>
+
+<td style="text-align:right;">
+
+0
+
+</td>
+
+<td style="text-align:left;">
+
+05/15/2020 07:00
+
+</td>
+
+</tr>
+
+<tr>
+
+<td style="text-align:right;">
+
+1
+
+</td>
+
+<td style="text-align:left;">
+
+05/15/2020 07:20
+
+</td>
+
+</tr>
+
+<tr>
+
+<td style="text-align:right;">
+
+2
+
+</td>
+
+<td style="text-align:left;">
+
+05/15/2020 07:40
+
+</td>
+
+</tr>
+
+<tr>
+
+<td style="text-align:right;">
+
+3
+
+</td>
+
+<td style="text-align:left;">
+
+05/15/2020 08:00
+
+</td>
+
+</tr>
+
+<tr>
+
+<td style="text-align:right;">
+
+4
+
+</td>
+
+<td style="text-align:left;">
+
+05/15/2020 08:20
+
+</td>
+
+</tr>
+
+<tr>
+
+<td style="text-align:right;">
+
+5
+
+</td>
+
+<td style="text-align:left;">
+
+05/15/2020 08:40
+
+</td>
+
+</tr>
+
+<tr>
+
+<td style="text-align:right;">
+
+6
+
+</td>
+
+<td style="text-align:left;">
+
+05/15/2020 09:00
+
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+
+## Direct export to `.dbf`
+
+If you don’t want/need to revise departure times, you can easily export
+them directly, e.g. to `.dbf` file using `{foreign}` package:
+
+``` r
+library(DepartureTime)
+library(foreign)
+library(dplyr)
+
+# generate departure times for 8-10am time window 
+# with 30-minute temporal resolution applying hybrid sampling model:
+DepartureTime(tmin = 8, tmax = 10, res = 30) %>% 
+  
+  #save output in OD_analysis subfolder as My_Departure_Times.dbf
+  write.dbf("OD_analysis/My_Departure_Times.dbf")
+  
+```
+
+## Background
+
+This script was inspired by [Owen & Murphy
+(2018)](https://trid.trb.org/view/1497217) study and was developed when
+working on [Stępniak et
+al. (2019)](https://doi.org/10.1016/j.jtrangeo.2019.01.007) paper:
+
+Stępniak, M., Pritchard, J.P., Geurs K.T., Goliszek S., 2019, *The
+impact of temporal resolution on public transport accessibility
+measurement: review and case study in Poland*, Journal of Transport
+Geography.
+
+### Funding statement
+
+This document is created within the **MSCA CAlCULUS** project.
+
+*This project has received funding from the European Union’s Horizon
+2020 research and innovation Programme under the Marie Sklodowska-Curie
+Grant Agreement no. 749761.*  
+*The views and opinions expressed herein do not necessarily reflect
+those of the European Commission.*
