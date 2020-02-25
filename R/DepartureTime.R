@@ -89,15 +89,6 @@ DepartureTime <- function(method = "H",
             paste0("Argument 'dy' is not a year. Please provide a valid argument 'dy', e.g. dy = ",
                    format(Sys.Date(), "%Y")))
 
-         # check if 'dy' is a realistic year
-         # if(dy%%1==0 & (dy < 2015 | dy > as.numeric(format(Sys.Date(), "%Y"))))  {
-         #    response_menu <- utils::menu(c("Yes", "No"), title=paste0("You have selected ", dy,
-         #                                                       " as a year. \n  Do you want to continue?"))
-         #    if(response_menu == 1)  warning(paste("You are using", dy, "as a year"))
-         #    if(response_menu == 2)  stop("Please provide a a valid argument 'dy', e.g. dy = ",
-         #                                 format(Sys.Date(), "%Y"))
-         #
-         # }
       }
    }
 
