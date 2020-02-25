@@ -52,8 +52,6 @@ devtools::install_github("stmarcin/DepartureTime")
 ## Function syntax:
 
 ```
-library(DepartureTime)
-
 DepartureTime <- function(method = "H",
                           dy = format(Sys.Date(), "%Y"),  
                           dm = format(Sys.Date(), "%m"), 
@@ -98,7 +96,9 @@ kable_styling(kable(FileStructure), full_width = F)
 
 Working example, uses all default variables and hybrid sampling method:
 
-```
+```{R eval = F}
+library(DepartureTime)
+
 DepartureTime() %>% 
   head()
 ```
@@ -156,7 +156,7 @@ Stępniak, M., Pritchard, J.P., Geurs K.T., Goliszek S., 2019, *The impact of te
 
 ### Funding statement
 
-This document is created within the **MSCA CAlCULUS** project.  
+This document was created within the **MSCA CAlCULUS** project.  
 
 *This project has received funding from the European Union's Horizon 2020 research and innovation Programme under the Marie Sklodowska-Curie Grant Agreement no. 749761.*  
 *The views and opinions expressed herein do not necessarily reflect those of the European Commission.*

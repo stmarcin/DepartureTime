@@ -140,19 +140,19 @@ DepartureTime <- function(method = "H",
 
       }
 
-      # confirm selection of 'dy' (in case is from a past or future)
-      if(is.numeric(dy))  {
+   }
 
-         if(dy%%1==0 & (dy < 2015 | dy > as.numeric(format(Sys.Date(), "%Y"))))  {
-            response_menu <- utils::menu(c("Yes", "No"), title=paste0("You have selected ", dy,
-                                                                      " as a year. \n  Do you want to continue?"))
-            if(response_menu == 1)  warning(paste("You are using", dy, "as a year"))
-            if(response_menu == 2)  stop("Please provide a a valid argument 'dy', e.g. dy = ",
-                                         format(Sys.Date(), "%Y"))
+   # confirm selection of 'dy' (in case is from a past or future)
+   if(is.numeric(dy))  {
 
-         }
+      if(dy%%1==0 & (dy < 2015 | dy > as.numeric(format(Sys.Date(), "%Y"))))  {
+         response_menu <- utils::menu(c("Yes", "No"), title=paste0("You have selected ", dy,
+                                                                   " as a year. \n  Do you want to continue?"))
+         if(response_menu == 1)  warning(paste("You are using", dy, "as a year"))
+         if(response_menu == 2)  stop("Please provide a a valid argument 'dy', e.g. dy = ",
+                                      format(Sys.Date(), "%Y"))
+
       }
-
    }
 
    # test tmin and tmax values (positive integers and tmin < tmax)

@@ -52,8 +52,6 @@ devtools::install_github("stmarcin/DepartureTime")
 
 ## Function syntax:
 
-    library(DepartureTime)
-    
     DepartureTime <- function(method = "H",
                               dy = format(Sys.Date(), "%Y"),  
                               dm = format(Sys.Date(), "%m"), 
@@ -151,8 +149,12 @@ Departure date & hour
 
 Working example, uses all default variables and hybrid sampling method:
 
-    DepartureTime() %>% 
-      head()
+``` r
+library(DepartureTime)
+
+DepartureTime() %>% 
+  head()
+```
 
 <table class="table" style="width: auto !important; margin-left: auto; margin-right: auto;">
 
@@ -188,7 +190,7 @@ Date
 
 <td style="text-align:left;">
 
-02/24/2020 00:01
+02/25/2020 00:00
 
 </td>
 
@@ -204,7 +206,7 @@ Date
 
 <td style="text-align:left;">
 
-02/24/2020 00:08
+02/25/2020 00:07
 
 </td>
 
@@ -220,7 +222,7 @@ Date
 
 <td style="text-align:left;">
 
-02/24/2020 00:13
+02/25/2020 00:13
 
 </td>
 
@@ -236,7 +238,7 @@ Date
 
 <td style="text-align:left;">
 
-02/24/2020 00:18
+02/25/2020 00:16
 
 </td>
 
@@ -252,7 +254,7 @@ Date
 
 <td style="text-align:left;">
 
-02/24/2020 00:20
+02/25/2020 00:21
 
 </td>
 
@@ -268,7 +270,7 @@ Date
 
 <td style="text-align:left;">
 
-02/24/2020 00:26
+02/25/2020 00:29
 
 </td>
 
@@ -460,7 +462,7 @@ Geography.
 
 ### Funding statement
 
-This document is created within the **MSCA CAlCULUS** project.
+This document was created within the **MSCA CAlCULUS** project.
 
 *This project has received funding from the European Union’s Horizon
 2020 research and innovation Programme under the Marie Sklodowska-Curie
