@@ -4,10 +4,17 @@
 \alias{DepartureTime}
 \title{Generate Departure times}
 \usage{
-DepartureTime(method = "H", dy = format(Sys.Date(), "\%Y"),
-  dm = format(Sys.Date(), "\%m"), dd = format(Sys.Date(), "\%d"),
-  tmin = 0, tmax = 24, res = 5, MMDD = TRUE, ptw = FALSE,
-  path = getwd(), file = "DepTime")
+DepartureTime(
+  method = "H",
+  dy = format(Sys.Date(), "\%Y"),
+  dm = format(Sys.Date(), "\%m"),
+  dd = format(Sys.Date(), "\%d"),
+  tmin = 0,
+  tmax = 24,
+  res = 5,
+  MMDD = TRUE,
+  ptw = FALSE
+)
 }
 \arguments{
 \item{method}{(type: character) define sampling method. Optional values:
@@ -51,17 +58,12 @@ default: \strong{default: system date}.}
 \item{ptw}{Bolean: whether or not print limits of subsetted time-windows;
 
 \strong{default: FALSE;}}
-
-\item{path}{String: path where the output will be saved (absolute or relative paths availables);
-
-\strong{default: working directory}}
-
-\item{file}{String: name of the \code{.dbf} file, where departure times will be saved;
-
-\strong{default: "DepTime"}}
+}
+\value{
+data.frame with departure times in rows
 }
 \description{
-\code{DepartureTimes} generate .dbf file with departure times for accessibility analyses with temporal resolution (e.g GTFS)
+\code{DepartureTimes} generate data.frame with departure times for accessibility analyses with temporal resolution (e.g GTFS)
 }
 \examples{
 \dontrun{
@@ -70,8 +72,8 @@ DepartureTime()
 DepartureTime(method = "S",       # systematic sampling method
  dm = 5, dd = 15,                 # user-defined date: 15th May, 2019 (current year)
  tmin = 7, tmax = 10,             # user-defined time window (07:00 - 10:00)
- res = 15,                        # user-defined temporal resolution (15 minutes)
- path = "Data/StartTime",         # user-defined relavive path and file name (next line)
- file = "DepTime_H15_0710")}
+ res = 15)                        # user-defined temporal resolution (15 minutes)
+ }
+
 
 }
