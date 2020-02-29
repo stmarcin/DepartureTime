@@ -37,6 +37,24 @@ Supported sampling methods:
     next departure time is randomly selected from the subset limited by
     \(Tn+f/2\) and \(Tn+f+f/2\)
 
+Example (temporal resolution 20 minutes, time window 07:00 -
+08:00):
+
+| Sampling method   | Departure times           | Comments                                                                          |
+| ----------------- | ------------------------- | --------------------------------------------------------------------------------- |
+| **Systematic**    | 07:00; 07:20, 7:40, 08:00 | regular interval of 20 minutes<sup>1</sup>                                        |
+| **Simple Random** | 07:18; 07:51; 07:55       | 3 randomly selected departure times from the time window<sup>2</sup>              |
+| **Hybrid**        | 07:02; 07:23; 07:50       | One randomly selected departure time from each time interval period<sup>3</sup>   |
+| **Random Walk**   | 07:15; 07:36; 07:49       | on average there should be 20-minute interval between departure times<sup>4</sup> |
+
+<sup>1</sup> as 20-minute interval fits to 60 minute time window it
+provides 4 departure times.  
+<sup>2</sup> i.e. one per each 20 min. in 60-minute time window.  
+<sup>3</sup> i.e. one from 07:00-07:19, one from 07:20-07:39 and one
+from 07:40-07:59.  
+<sup>4</sup> due to the nature of the sampling procedure, the number of
+departure times might differ.
+
 For details please consult [Owen & Murphy
 (2018)](https://trid.trb.org/view/1497217).
 
@@ -190,7 +208,7 @@ Date
 
 <td style="text-align:left;">
 
-02/25/2020 00:00
+02/29/2020 00:00
 
 </td>
 
@@ -206,7 +224,7 @@ Date
 
 <td style="text-align:left;">
 
-02/25/2020 00:07
+02/29/2020 00:07
 
 </td>
 
@@ -222,7 +240,7 @@ Date
 
 <td style="text-align:left;">
 
-02/25/2020 00:13
+02/29/2020 00:10
 
 </td>
 
@@ -238,7 +256,7 @@ Date
 
 <td style="text-align:left;">
 
-02/25/2020 00:16
+02/29/2020 00:17
 
 </td>
 
@@ -254,7 +272,7 @@ Date
 
 <td style="text-align:left;">
 
-02/25/2020 00:21
+02/29/2020 00:22
 
 </td>
 
@@ -270,7 +288,7 @@ Date
 
 <td style="text-align:left;">
 
-02/25/2020 00:29
+02/29/2020 00:27
 
 </td>
 
@@ -452,8 +470,8 @@ DepartureTime(tmin = 8, tmax = 10, res = 30) %>%
 
 This script was inspired by [Owen & Murphy
 (2018)](https://trid.trb.org/view/1497217) study and was developed when
-working on [Stępniak et
-al. (2019)](https://doi.org/10.1016/j.jtrangeo.2019.01.007) paper:
+working on [Stępniak et al.
+(2019)](https://doi.org/10.1016/j.jtrangeo.2019.01.007) paper:
 
 Stępniak, M., Pritchard, J.P., Geurs K.T., Goliszek S., 2019, *The
 impact of temporal resolution on public transport accessibility
