@@ -42,6 +42,20 @@ Supported sampling methods:
 + **Hybrid** sampling method: departure times are randomly selected from given time intervals (resulted from applied temporal resolution)
 + **Constrained Random Walk Sampling** sampling method: a first departure time is randomly selected from the subset of the length defined by the frequency and beginning of the time window; then, the next departure time is randomly selected from the subset limited by $Tn+f/2$ and $Tn+f+f/2$
 
+Example (temporal resolution 20 minutes, time window 07:00 - 08:00):
+
+Sampling method | Departure times | Comments
+------------ | ------------- | -------------
+**Systematic** | 07:00; 07:20, 7:40, 08:00 | regular interval of 20 minutes<sup>1</sup>
+**Simple Random** | 07:18; 07:51; 07:55 | 3 randomly selected departure times from the time window<sup>2</sup>
+**Hybrid** | 07:02; 07:23; 07:50 | One randomly selected departure time from each time interval period<sup>3</sup>
+**Random Walk** | 07:15; 07:36; 07:49 | on average there should be 20-minute interval between departure times<sup>4</sup>
+
+<sup>1</sup>  as 20-minute interval fits to 60 minute time window it provides 4 departure times.   
+<sup>2</sup>  i.e. one per each 20 min. in 60-minute time window.  
+<sup>3</sup>  i.e. one from 07:00-07:19, one from 07:20-07:39 and one from 07:40-07:59.  
+<sup>4</sup>  due to the nature of the sampling procedure, the number of departure times might differ.
+
 For details please consult [Owen & Murphy (2018)](https://trid.trb.org/view/1497217).
 
 ## Installation
