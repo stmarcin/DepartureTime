@@ -78,7 +78,7 @@ DepartureTime <- function(method = "H",
 
       # check if 'dy' is numeric:
       if(!is.numeric(dy))  stop(paste0(
-         "Argument 'dy' is not a year. Please provide a valid argument 'dy', e.g. dy = ",
+         "Argument 'dy' is not a valid year. Please provide a valid argument 'dy', e.g. dy = ",
          format(Sys.Date(), "%Y")))
 
 
@@ -86,7 +86,7 @@ DepartureTime <- function(method = "H",
 
          # check if 'dy' is integer
          if(dy%%1!=0)  stop(
-            paste0("Argument 'dy' is not a year. Please provide a valid argument 'dy', e.g. dy = ",
+            paste0("Argument 'dy' is not a valid year. Please provide a valid argument 'dy', e.g. dy = ",
                    format(Sys.Date(), "%Y")))
 
       }
@@ -97,18 +97,18 @@ DepartureTime <- function(method = "H",
 
       # check if 'dm is numeric
       if(!is.numeric(dm))  stop(paste0(
-         "Argument 'dm' is not a month Please provide a valid argument 'dm', e.g. dm = ",
+         "Argument 'dm' is not a valid month. Please provide a valid argument 'dm', e.g. dm = ",
          as.numeric(format(Sys.Date(), "%m"))))
 
       if(is.numeric(dm))  {
 
          # check if 'dm' is a positive integer
          if(dm%%1!=0 | dm < 1)  stop(
-            paste0("Argument 'dm' is not a month Please provide a valid argument 'dm', e.g. dm = ",
+            paste0("Argument 'dm' is not a valid month. Please provide a valid argument 'dm', e.g. dm = ",
                    as.numeric(format(Sys.Date(), "%m"))))
 
          # check if 'dm is not higher than 12
-         if(dm > 12)  stop(paste0("Are you sure that ", dy, " year has more than 12 months?") )
+         if(dm > 12)  stop(paste0("Are you sure that the year ", dy, " has more than 12 months?") )
       }
    }
 
@@ -117,14 +117,14 @@ DepartureTime <- function(method = "H",
 
       # check if 'dm is numeric
       if(!is.numeric(dd))  stop(paste0(
-         "Argument 'dd' is not a month day. Please provide a valid argument 'dd', e.g. dd = ",
+         "Argument 'dd' is not a valid month day. Please provide a valid argument 'dd', e.g. dd = ",
          as.numeric(format(Sys.Date(), "%d"))))
 
       if(is.numeric(dd)) {
 
          # check if 'dd' is a positive integer
          if(dd%%1!=0 | dd < 1)  stop(
-            paste0("Argument 'dd' is not a month day. Please provide a valid argument 'dd', e.g. dd = ",
+            paste0("Argument 'dd' is not a valid month day. Please provide a valid argument 'dd', e.g. dd = ",
                    as.numeric(format(Sys.Date(), "%d"))))
 
          # check if 'dd' is a valid month day in month 'dm' and year 'dy'
@@ -157,26 +157,25 @@ DepartureTime <- function(method = "H",
 
    # test tmin and tmax values (positive integers and tmin < tmax)
    if(!is.numeric(tmin))
-      stop("Please provide valid 'tmin' value. It has to be a positive integer [0:23]")
+      stop("Please provide valid 'tmin' value. It has to be a positive integer between 0 and 23")
 
    if(!is.numeric(tmax))
-      stop("Please provide valid 'tmax' value. It has to be a positive integer [1:24]")
+      stop("Please provide valid 'tmax' value. It has to be a positive integer between 1 and 24")
 
    if(is.numeric(tmin))  {
 
       if(tmin%%1!=0 | tmin < 0 | tmin > 23)
-         stop("Please provide valid 'tmin' value. It has to be a positive integer [0:23]")
+         stop("Please provide valid 'tmin' value. It has to be a positive integer between 0 and 23")
    }
 
    if(is.numeric(tmax))  {
 
       if(tmax%%1!=0 | tmax < 1 | tmax > 24)
-         stop("Please provide valid 'tmax' value. It has to be a positive integer [1:24]")
+         stop("Please provide valid 'tmax' value. It has to be a positive integer between 1 and 24")
    }
 
    if(tmin >= tmax)
-      stop("Please provide valid 'tmin' and 'tmax' values:
-   'tmin' has to be smaller than 'tmax'. (tmin < tmax)")
+      stop("Please provide valid 'tmin' and 'tmax' values:\n'tmin' has to be smaller than 'tmax'")
 
 
    # test res value (a positive integer)
