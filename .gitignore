@@ -41,5 +41,3 @@ vignettes/*.pdf
 
 # my files
 *.Rproj
-
-tests/
