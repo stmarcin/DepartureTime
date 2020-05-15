@@ -5,6 +5,8 @@
 
 [![Project Status:
 Active](http://www.repostatus.org/badges/latest/active.svg)](http://www.repostatus.org/#active)
+[![Travis build
+status](https://travis-ci.com/stmarcin/DepartureTime.svg?branch=master)](https://travis-ci.com/stmarcin/DepartureTime)
 <!-- badges: end -->
 
 # DepartureTime
@@ -37,8 +39,7 @@ Supported sampling methods:
     next departure time is randomly selected from the subset limited by
     \(Tn+f/2\) and \(Tn+f+f/2\)
 
-Example (temporal resolution 20 minutes, time window 07:00 -
-08:00):
+Example (temporal resolution 20 minutes, time window 07:00 - 08:00):
 
 | Sampling method   | Departure times           | Comments                                                                          |
 | ----------------- | ------------------------- | --------------------------------------------------------------------------------- |
@@ -100,8 +101,7 @@ devtools::install_github("stmarcin/DepartureTime")
 
 `data.frame` which contains generated departure times (to be used
 e.g. in ArcGIS Network to generated ODs with time-dependent transport
-data, e.g. GTFS). File
-structure:
+data, e.g. GTFS). File structure:
 
 <table class="table" style="width: auto !important; margin-left: auto; margin-right: auto;">
 
@@ -208,7 +208,7 @@ Date
 
 <td style="text-align:left;">
 
-02/29/2020 00:00
+05/16/2020 00:01
 
 </td>
 
@@ -224,7 +224,7 @@ Date
 
 <td style="text-align:left;">
 
-02/29/2020 00:07
+05/16/2020 00:06
 
 </td>
 
@@ -240,7 +240,7 @@ Date
 
 <td style="text-align:left;">
 
-02/29/2020 00:10
+05/16/2020 00:12
 
 </td>
 
@@ -256,7 +256,7 @@ Date
 
 <td style="text-align:left;">
 
-02/29/2020 00:17
+05/16/2020 00:18
 
 </td>
 
@@ -272,7 +272,7 @@ Date
 
 <td style="text-align:left;">
 
-02/29/2020 00:22
+05/16/2020 00:22
 
 </td>
 
@@ -288,7 +288,7 @@ Date
 
 <td style="text-align:left;">
 
-02/29/2020 00:27
+05/16/2020 00:27
 
 </td>
 
@@ -470,8 +470,8 @@ DepartureTime(tmin = 8, tmax = 10, res = 30) %>%
 
 This script was inspired by [Owen & Murphy
 (2018)](https://trid.trb.org/view/1497217) study and was developed when
-working on [Stępniak et al.
-(2019)](https://doi.org/10.1016/j.jtrangeo.2019.01.007) paper:
+working on [Stępniak et
+al. (2019)](https://doi.org/10.1016/j.jtrangeo.2019.01.007) paper:
 
 Stępniak, M., Pritchard, J.P., Geurs K.T., Goliszek S., 2019, *The
 impact of temporal resolution on public transport accessibility
